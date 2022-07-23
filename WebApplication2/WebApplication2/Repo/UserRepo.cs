@@ -3,10 +3,10 @@
 namespace WebApplication2.Repo
 {
 
-    public class UserRepo
+    public class UserRepo :IUser
     {
-        static List<User> users { get; set; }
-        static UserRepo()
+         List<User> users { get; set; }
+         UserRepo()
         {
             users = new List<User>()
             {
@@ -18,25 +18,25 @@ namespace WebApplication2.Repo
             };
 
         }
-        public static List<User> GetAll()
+        public  List<User> GetAll()
         {
             return users;
         }
-        public static User Get(int id)
+        public  User Get(int id)
         {
             return users.FirstOrDefault(users => users.Id == id);
         }
-        public static void Add(User user)
+        public  void Add(User user)
         {
             users.Add(user);
         }
-        public static void Delete(int id)
+        public  void Delete(int id)
         {
             var user = Get(id);
             if (user != null)
                 users.Remove(user);
         }
-        public static void Update(int id, User user)
+        public  void Update(int id, User user)
         {
             var index = users.FindIndex(u => u.Id == id);
             if (index == -1)

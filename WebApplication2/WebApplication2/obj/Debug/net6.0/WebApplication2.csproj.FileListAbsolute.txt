@@ -25,3 +25,13 @@ C:\Users\khade\IConnect tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\r
 C:\Users\khade\IConnect tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.pdb
 C:\Users\khade\IConnect tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.genruntimeconfig.cache
 C:\Users\khade\IConnect tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\ref\WebApplication2.dll
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.csproj.AssemblyReference.cache
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.AssemblyInfoInputs.cache
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.AssemblyInfo.cs
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.csproj.CoreCompileInputs.cache
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.dll
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\refint\WebApplication2.dll
+C:\Users\khade\IConnect tasks\IConnect-Tasks\WebApplication2\WebApplication2\obj\Debug\net6.0\WebApplication2.pdb
