@@ -44,7 +44,7 @@ namespace UserUsingFrameWork.Controllers
                 return BadRequest();
             }
         }
-        [HttpPost]
+       /* [HttpPost]
         [Route("[action]")]
         public IActionResult SaveUser(User userModel)
         {
@@ -57,7 +57,36 @@ namespace UserUsingFrameWork.Controllers
             {
                 return BadRequest();
             }
+        }*/
+        [HttpPost]
+        [Route("[action]")]
+        public IActionResult AddUser(User userModel)
+        {
+            try
+            {
+                var model = _userService.AddUser(userModel);
+                return Ok(model);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
+        [HttpPut]
+        [Route("[action]")]
+        public IActionResult UpdateUser(User userModel)
+        {
+            try
+            {
+                var model = _userService.UpdateUser(userModel);
+                return Ok(model);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpDelete]
         [Route("[action]")]
         public IActionResult DeleteUser(int id)

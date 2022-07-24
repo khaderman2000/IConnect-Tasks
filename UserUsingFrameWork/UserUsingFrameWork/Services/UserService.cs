@@ -10,6 +10,26 @@ namespace UserUsingFrameWork.Services
         {
             _context = context;
         }
+
+        public ResponseModel AddUser(User userModel)
+        {
+            ResponseModel model = new ResponseModel();
+            try
+            {
+                _context.Add<User>(userModel);
+                model.Messsage = "User Inserted Successfully";
+                _context.SaveChanges();
+                model.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                model.IsSuccess = false;
+                model.Messsage = "Error : " + ex.Message;
+            }
+            return model;
+            
+        }
+
         public ResponseModel DeleteUser(int userId)
         {
             ResponseModel model = new ResponseModel();
@@ -94,6 +114,37 @@ namespace UserUsingFrameWork.Services
             }
             return model;
 
+        }
+
+        public ResponseModel UpdateUser(User userModel)
+        {
+            ResponseModel model = new ResponseModel();
+            try
+            {
+                User _temp = GetUserDetailsById(userModel.Id);
+                if (_temp != null)
+                {
+                    _temp.FirstName = userModel.FirstName;
+                    _temp.LastName = userModel.LastName;
+
+                    _context.Update<User>(_temp);
+                    model.Messsage = "User Update Successfully";
+                    _context.SaveChanges();
+                    model.IsSuccess = true;
+                }
+                else
+                {
+                    
+                    model.Messsage = "Can't find the User";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                model.IsSuccess = false;
+                model.Messsage = "Error : " + ex.Message;
+            }
+            return model;
         }
     }
 }

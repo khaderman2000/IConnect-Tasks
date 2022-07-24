@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2HdxdQqGEF7e+adcluJPySowOZxueVC+8WO3ko017ilCKuWvrq+uIlAItB9HZm9x2MdxAsPFaiyk29exx1OLHg==",
+  "dgSpecHash": "Lz6lZ3IRcXgjRtEoCAz9qUaX2rvsTLQFx6cLglWAfOi/EmyfD8MP8vEdgdfLPccYvxtl27G19TlJWiNShRBKJw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khade\\IConnect tasks\\UserUsingFrameWork\\UserUsingFrameWork\\UserUsingFrameWork.csproj",
+  "projectFilePath": "C:\\Users\\khade\\IConnect tasks\\IConnect-Tasks\\UserUsingFrameWork\\UserUsingFrameWork\\UserUsingFrameWork.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khade\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\khade\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

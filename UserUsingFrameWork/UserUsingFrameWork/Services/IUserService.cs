@@ -12,6 +12,8 @@ namespace UserUsingFrameWork.Services
 
         ResponseModel SaveUser(User userModel);
 
+        ResponseModel AddUser(User userModel);
+        ResponseModel UpdateUser(User userModel);
 
         ResponseModel DeleteUser(int userId);
     }
