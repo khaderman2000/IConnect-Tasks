@@ -12,7 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("ConStr");
 builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<PostContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IUserService ,UserService>();
+builder.Services.AddScoped<IPostService ,PostService>();
 
 var app = builder.Build();
 

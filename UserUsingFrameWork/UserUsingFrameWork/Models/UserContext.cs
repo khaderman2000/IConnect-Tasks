@@ -10,5 +10,11 @@ namespace UserUsingFrameWork.Models
             get;
             set;
         }
+        DbSet<Post> Post
+        {
+            get;
+            set;
+        }
+
     }
 }
