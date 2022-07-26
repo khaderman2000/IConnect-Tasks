@@ -2,7 +2,11 @@
 
 namespace UserUsingFrameWork.Models
 {
-    public class BasicModel
+    public interface IBasicModel
+    {
+        public int Id { get; set; }
+    }
+    public class BasicModel :IBasicModel
     {
        [Key] public int Id { get; set; }
     }

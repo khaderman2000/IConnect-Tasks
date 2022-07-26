@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
+using UserUsingFrameWork.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionString = builder.Configuration.GetConnectionString("ConStr");
-builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
-//builder.Services.AddDbContext<PostContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddScoped<INewUserService ,NewUserService>();
-builder.Services.AddScoped<INewPostService ,NewPostService>();
+builder.Services.Start(builder.Configuration);
 
 var app = builder.Build();
 
