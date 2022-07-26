@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserUsingFrameWork.Models
 {
-    public class Post
+    public class Post : BasicModel
     {
-        [Key]
-        public int Id { get; set; } 
+        
         public string Title { get; set; }
         [ForeignKey("UserId")]
 

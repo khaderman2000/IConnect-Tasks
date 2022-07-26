@@ -13,8 +13,8 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("ConStr");
 builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
 //builder.Services.AddDbContext<PostContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddScoped<IUserService ,UserService>();
-builder.Services.AddScoped<IPostService ,PostService>();
+builder.Services.AddScoped<INewUserService ,NewUserService>();
+builder.Services.AddScoped<INewPostService ,NewPostService>();
 
 var app = builder.Build();
 

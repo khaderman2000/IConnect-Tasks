@@ -9,8 +9,8 @@ namespace UserUsingFrameWork.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        IUserService _userService;
-        public UserController(IUserService service)
+        INewUserService _userService;
+        public UserController(INewUserService service)
         {
             _userService = service;
         }
@@ -20,7 +20,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var users = _userService.GetUsersList();
+                var users = _userService.Get();
                 if (users == null) return NotFound();
                 return Ok(users);
             }
@@ -31,11 +31,11 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]/id")]
-        public IActionResult GetUserById(int id)
+        public IActionResult GetId(int id)
         {
             try
             {
-                var users = _userService.GetUserDetailsById(id);
+                var users = _userService.GetId(id);
                 if (users == null) return NotFound();
                 return Ok(users);
             }
@@ -64,7 +64,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var model = _userService.AddUser(userModel);
+                var model = _userService.Add(userModel);
                 return Ok(model);
             }
             catch (Exception)
@@ -74,11 +74,11 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPut]
         [Route("[action]")]
-        public IActionResult UpdateUser(User userModel)
+        public IActionResult UpdatUser(User userModel)
         {
             try
             {
-                var model = _userService.UpdateUser(userModel);
+                var model = _userService.Update(userModel);
                 return Ok(model);
             }
             catch (Exception)
@@ -93,8 +93,8 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var model = _userService.DeleteUser(id);
-                return Ok(model);
+                 _userService.Delete(id);
+                return Ok();
             }
             catch (Exception)
             {

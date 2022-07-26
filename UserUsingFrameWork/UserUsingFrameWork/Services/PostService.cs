@@ -2,7 +2,7 @@
 using UserUsingFrameWork.ViewModels;
 
 namespace UserUsingFrameWork.Services
-{
+{/*
     public class PostService : IPostService
     {
         private UserContext _context;
@@ -10,22 +10,14 @@ namespace UserUsingFrameWork.Services
         {
             _context = context;
         }
-        public ResponseModel AddPost(Post postModel)
+        public Post AddPost(Post postModel)
         {
-            ResponseModel model = new ResponseModel();
-            try
-            {
+            
                 _context.Add<Post>(postModel);
                 model.Messsage = "Post Inserted Successfully";
                 _context.SaveChanges();
-                model.IsSuccess = true;
-            }
-            catch (Exception ex)
-            {
-                model.IsSuccess = false;
-                model.Messsage = "Error : " + ex.Message;
-            }
-            return model;
+
+             
         }
 
         public ResponseModel DeletePost(int postId)
@@ -116,5 +108,5 @@ namespace UserUsingFrameWork.Services
             }
             return model;
         }
-    }
+    }*/
 }

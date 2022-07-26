@@ -9,8 +9,8 @@ namespace UserUsingFrameWork.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
-        IPostService _postService;
-        public PostController(IPostService service)
+        INewPostService _postService;
+        public PostController(INewPostService service)
         {
             _postService = service;
         }
@@ -20,7 +20,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var posts = _postService.GetPostList();
+                var posts = _postService.Get();
                 if (posts == null) return NotFound();
                 return Ok(posts);
             }
@@ -35,7 +35,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var posts = _postService.GetPostDetailsById(id);
+                var posts = _postService.GetId(id);
                 if (posts == null) return NotFound();
                 return Ok(posts);
             }
@@ -64,7 +64,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var model = _postService.AddPost(postModel);
+                var model = _postService.Add(postModel);
                 return Ok(model);
             }
             catch (Exception)
@@ -78,7 +78,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var model = _postService.UpdatePost(postModel);
+                var model = _postService.Update(postModel);
                 return Ok(model);
             }
             catch (Exception)
@@ -93,8 +93,8 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var model = _postService.DeletePost(id);
-                return Ok(model);
+                _postService.Delete(id);
+                return Ok();
             }
             catch (Exception)
             {
