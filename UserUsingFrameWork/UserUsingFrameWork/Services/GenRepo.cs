@@ -15,7 +15,7 @@ namespace UserUsingFrameWork.Services
         
 
 
-    public class GenRepo<T> : IGenRepo<T> where T : class
+    public class GenRepo<T> : IGenRepo<T> where T : class,IBasicModel
     {
         private UserContext _context;
 
