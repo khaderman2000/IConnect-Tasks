@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
-using UserUsingFrameWork.Fillters;
 
 namespace UserUsingFrameWork.Controllers
 {
