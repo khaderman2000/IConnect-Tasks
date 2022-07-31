@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
+using UserUsingFrameWork.Fillters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UserUsingFrameWork.Controllers
 {
@@ -15,13 +17,14 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        public IActionResult GetAllPosts()
-        {
+        [ServiceFilter(typeof(Roles))]
+        public  async Task<IActionResult> GetAllPosts()
+        { 
             try
             { 
-               var posts = _postService.Get();
+               var posts = await _postService.Get();
                if (posts == null) return NotFound();
-               return Ok();
+               return Ok(posts);
             }
             catch (Exception)
             {
@@ -30,11 +33,11 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]/id")]
-        public IActionResult GetPostById(int id)
+        public async Task<IActionResult> GetPostById(int id)
         {
             try
             {
-                var posts = _postService.GetId(id);
+                var posts =await _postService.GetId(id);
                 if (posts == null) return NotFound();
                 return Ok(posts);
             }
@@ -43,28 +46,15 @@ namespace UserUsingFrameWork.Controllers
                 throw new Exception("Error: unvaild Id ");
             }
         }
-        /* [HttpPost]
-         [Route("[action]")]
-         public IActionResult SaveUser(User userModel)
-         {
-             try
-             {
-                 var model = _userService.SaveUser(userModel);
-                 return Ok(model);
-             }
-             catch (Exception)
-             {
-                 return BadRequest();
-             }
-         }*/
+        
         [HttpPost]
         [Route("[action]")]
-        public IActionResult AddPosts([FromBody]Post postModel)
+        public async Task<IActionResult> AddPosts([FromBody]Post postModel)
         {
 
             try
             {
-                var model = _postService.Add(postModel);
+                var model =await   _postService.Add(postModel);
                 return Ok(model);
             }
             catch (Exception)
@@ -94,16 +84,16 @@ namespace UserUsingFrameWork.Controllers
 
         [HttpDelete]
         [Route("[action]")]
-        public IActionResult DeletePost(int id)
+        public async Task<IActionResult> DeletePost(int id)
         {
             try
             {
-                _postService.Delete(id);
+              await _postService.Delete(id);
                 return Ok();
             }
             catch (Exception)
             {
-                throw new Exception("cant delete User with Id" + id);
+                throw new Exception("cant delete User with Id:" + id);
             }
         }
     }

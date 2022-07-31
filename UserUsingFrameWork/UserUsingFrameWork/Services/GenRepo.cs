@@ -1,14 +1,15 @@
-﻿using UserUsingFrameWork.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using UserUsingFrameWork.Models;
 
 namespace UserUsingFrameWork.Services
 {
     public interface IGenRepo<T> where T : class
     {
-        public List<T> Get();
-        public T GetId(int id);
-        public T Add(T model);
+        public Task<List<T>?> Get();
+        public ValueTask<T?> GetId(int id);
+        public Task<T> Add(T model);
         public T Update(T model);
-        public void Delete(int id);
+        public Task<T> Delete(int id);
 
     }
 
@@ -23,19 +24,19 @@ namespace UserUsingFrameWork.Services
         {
             _context = context;
         }
-        public List<T> Get()
+        public   Task<List<T>?> Get()
         {
-            return _context.Set<T>().ToList();
+            return  _context.Set<T>().ToListAsync();
         }
-        public T GetId(int id)
+        public ValueTask<T?> GetId(int id)
         {
-            return _context.Set<T>().Find(id);
+            return _context.Set<T>().FindAsync(id);
         }
-        public T Add(T model)
+        public async Task<T> Add(T model)
         {
-            _context.Add<T>(model);
-            _context.SaveChanges();
-            return model;
+           await _context.AddAsync<T>(model);
+            await _context.SaveChangesAsync();
+            return model ;
         }
         public T Update(T model)
         {
@@ -44,12 +45,13 @@ namespace UserUsingFrameWork.Services
             return model;
 
         }
-        public void Delete(int id)
+        public async Task<T> Delete(int id)
         {
-            var _temp = GetId(id);
-
+            var _temp = await  GetId(id);
+             
             _context.Set<T>().Remove(_temp);
-            _context.SaveChanges();
+             await _context.SaveChangesAsync();
+            return _temp;
 
         }
 

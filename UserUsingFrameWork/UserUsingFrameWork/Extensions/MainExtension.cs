@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
+using UserUsingFrameWork.Fillters;
 
 namespace UserUsingFrameWork.Extensions
 {
@@ -13,6 +14,7 @@ namespace UserUsingFrameWork.Extensions
             //builder.Services.AddDbContext<PostContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<INewUserService, NewUserService>();
             services.AddScoped<INewPostService, NewPostService>();
+            services.AddScoped<Roles>();
 
 
 

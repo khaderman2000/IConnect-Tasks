@@ -16,12 +16,11 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        public IActionResult GetAllUsers()
+        public async Task<IActionResult> GetAllUsers()
         {
             try
             {
-                var users = _userService.Get();
-                if (users == null) return NotFound();
+                var users =await  _userService.Get();
                 return Ok(users);
             }
             catch (Exception)
@@ -31,12 +30,12 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]/id")]
-        public IActionResult GetId(int id)
+        public async Task<IActionResult> GetId(int id)
         {
             try
             {
-                var users = _userService.GetId(id);
-                if (users == null) return NotFound();
+                var users = await  _userService.GetId(id);
+                
                 return Ok(users);
             }
             catch (Exception)
@@ -60,11 +59,12 @@ namespace UserUsingFrameWork.Controllers
         }*/
         [HttpPost]
         [Route("[action]")]
-        public IActionResult AddUser(User userModel)
+        public async Task<IActionResult> AddUser(User userModel)
         {
             try
             {
-                var model = _userService.Add(userModel);
+
+                var model = await _userService.Add(userModel);
                 return Ok(model);
             }
             catch (Exception)
@@ -89,11 +89,11 @@ namespace UserUsingFrameWork.Controllers
 
         [HttpDelete]
         [Route("[action]")]
-        public IActionResult DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             try
             {
-                 _userService.Delete(id);
+                await  _userService.Delete(id);
                 return Ok();
             }
             catch (Exception)
