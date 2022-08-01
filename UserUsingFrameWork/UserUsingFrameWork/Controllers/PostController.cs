@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
-using UserUsingFrameWork.Fillters;
-using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace UserUsingFrameWork.Controllers
 {
@@ -11,20 +10,22 @@ namespace UserUsingFrameWork.Controllers
     public class PostController : ControllerBase
     {
         INewPostService _postService;
-        public PostController(INewPostService service)
+        private readonly IMapper _mapper;
+        public PostController(INewPostService service, IMapper mapper)
         {
             _postService = service;
+            _mapper= mapper;
         }
         [HttpGet]
         [Route("[action]")]
-        [ServiceFilter(typeof(Roles))]
+        //[ServiceFilter(typeof(Roles))]
         public  async Task<IActionResult> GetAllPosts()
         { 
             try
             { 
                var posts = await _postService.Get();
                if (posts == null) return NotFound();
-               return Ok(posts);
+               return Ok(_mapper.Map<List<PostVM>>(posts));
             }
             catch (Exception)
             {
@@ -39,7 +40,7 @@ namespace UserUsingFrameWork.Controllers
             {
                 var posts =await _postService.GetId(id);
                 if (posts == null) return NotFound();
-                return Ok(posts);
+                return Ok(_mapper.Map<PostVM>(posts));
             }
             catch (Exception)
             {
@@ -49,12 +50,12 @@ namespace UserUsingFrameWork.Controllers
         
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddPosts([FromBody]Post postModel)
+        public async Task<IActionResult> AddPosts([FromBody]PostVM postModel)
         {
 
             try
             {
-                var model =await   _postService.Add(postModel);
+                var model =await   _postService.Add(_mapper.Map<Post>(postModel));
                 return Ok(model);
             }
             catch (Exception)
@@ -69,11 +70,11 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPut]
         [Route("[action]")]
-        public IActionResult UpdatePost(Post postModel)
+        public IActionResult UpdatePost(PostVM postModel)
         {
-            try
-            {
-                var model = _postService.Update(postModel);
+            try 
+            { 
+                var model = _postService.Update(_mapper.Map<Post>(postModel));
                 return Ok(model);
             }
             catch (Exception)

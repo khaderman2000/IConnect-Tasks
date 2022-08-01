@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
@@ -10,9 +11,11 @@ namespace UserUsingFrameWork.Controllers
     public class UserController : ControllerBase
     {
         INewUserService _userService;
-        public UserController(INewUserService service)
+        private readonly IMapper _mapper;
+        public UserController(INewUserService service, IMapper mapper)
         {
             _userService = service;
+            _mapper = mapper;
         }
         [HttpGet]
         [Route("[action]")]
@@ -20,8 +23,8 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var users =await  _userService.Get();
-                return Ok(users);
+                var users =await _userService.Get();
+                return Ok(_mapper.Map<List<UserVM>>(users));
             }
             catch (Exception)
             {
@@ -36,35 +39,20 @@ namespace UserUsingFrameWork.Controllers
             {
                 var users = await  _userService.GetId(id);
                 
-                return Ok(users);
+                return Ok(_mapper.Map<UserVM>(users));
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-       /* [HttpPost]
-        [Route("[action]")]
-        public IActionResult SaveUser(User userModel)
-        {
-            try
-            {
-                var model = _userService.SaveUser(userModel);
-                return Ok(model);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }*/
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddUser(User userModel)
+        public async Task<IActionResult> AddUser(UserVM userModel)
         {
             try
             {
-
-                var model = await _userService.Add(userModel);
+                var model = await _userService.Add(_mapper.Map<User>(userModel));
                 return Ok(model);
             }
             catch (Exception)
@@ -74,11 +62,11 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPut]
         [Route("[action]")]
-        public IActionResult UpdatUser(User userModel)
+        public IActionResult UpdatUser(UserVM userModel)
         {
             try
             {
-                var model = _userService.Update(userModel);
+                var model = _userService.Update(_mapper.Map<User>(userModel));
                 return Ok(model);
             }
             catch (Exception)

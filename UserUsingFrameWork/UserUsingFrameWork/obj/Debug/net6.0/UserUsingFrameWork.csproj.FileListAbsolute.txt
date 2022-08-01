@@ -122,3 +122,5 @@ C:\Users\khade\IConnect tasks\IConnect-Tasks\UserUsingFrameWork\UserUsingFrameWo
 C:\Users\khade\IConnect tasks\IConnect-Tasks\UserUsingFrameWork\UserUsingFrameWork\obj\Debug\net6.0\UserUsingFrameWork.pdb
 C:\Users\khade\IConnect tasks\IConnect-Tasks\UserUsingFrameWork\UserUsingFrameWork\obj\Debug\net6.0\UserUsingFrameWork.genruntimeconfig.cache
 C:\Users\khade\IConnect tasks\IConnect-Tasks\UserUsingFrameWork\UserUsingFrameWork\obj\Debug\net6.0\ref\UserUsingFrameWork.dll
+C:\Users\khade\IConnect tasks\IConnect-Tasks\UserUsingFrameWork\UserUsingFrameWork\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\khade\IConnect tasks\IConnect-Tasks\UserUsingFrameWork\UserUsingFrameWork\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -2,7 +2,6 @@
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
 using UserUsingFrameWork.Fillters;
-
 namespace UserUsingFrameWork.Extensions
 {
     public static  class MainExtension
@@ -15,9 +14,7 @@ namespace UserUsingFrameWork.Extensions
             services.AddScoped<INewUserService, NewUserService>();
             services.AddScoped<INewPostService, NewPostService>();
             services.AddScoped<Roles>();
-
-
-
+            services.AddAutoMapper(typeof(Program));
         }
-    }
+    }               
 }

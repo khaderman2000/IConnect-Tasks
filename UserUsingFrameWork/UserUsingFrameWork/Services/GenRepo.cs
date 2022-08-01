@@ -31,6 +31,7 @@ namespace UserUsingFrameWork.Services
         public ValueTask<T?> GetId(int id)
         {
             return _context.Set<T>().FindAsync(id);
+
         }
         public async Task<T> Add(T model)
         {
