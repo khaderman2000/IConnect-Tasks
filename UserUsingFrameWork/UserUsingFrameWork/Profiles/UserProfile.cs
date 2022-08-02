@@ -8,6 +8,7 @@ namespace UserUsingFrameWork.Profiles
         public UserProfile()
         {
             CreateMap<User,UserVM>().ReverseMap();
+            CreateMap<Post, PostVM>().ReverseMap();
 
         }
     }

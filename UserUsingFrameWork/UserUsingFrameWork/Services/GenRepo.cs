@@ -1,15 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using UserUsingFrameWork.Models;
 
 namespace UserUsingFrameWork.Services
 {
     public interface IGenRepo<T> where T : class
     {
-        public Task<List<T>?> Get();
-        public ValueTask<T?> GetId(int id);
+        public Task<List<TVM>?> Get<TVM>() where TVM :class, IBasicModel;
+        public ValueTask<TVM?> GetId<TVM>(int id) where TVM : class, IBasicModel;
         public Task<T> Add(T model);
         public T Update(T model);
-        public Task<T> Delete(int id);
+        public Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel;
 
     }
 
@@ -19,19 +22,25 @@ namespace UserUsingFrameWork.Services
     public class GenRepo<T> : IGenRepo<T> where T : class,IBasicModel
     {
         private UserContext _context;
+        private readonly IMapper _mapper;
 
-        public GenRepo(UserContext context)
+
+        public GenRepo(UserContext context,IMapper mapper)
         {
             _context = context;
+            _mapper=mapper;
         }
-        public   Task<List<T>?> Get()
-        {
-            return  _context.Set<T>().ToListAsync();
-        }
-        public ValueTask<T?> GetId(int id)
-        {
-            return _context.Set<T>().FindAsync(id);
 
+        
+
+        public   Task<List<TVM>?> Get <TVM>()where TVM :class,IBasicModel
+        {
+            return _context.Set<T>().ProjectTo<TVM>(_mapper.ConfigurationProvider).ToListAsync();
+        }
+
+        public async ValueTask<TVM?> GetId<TVM>(int id) where TVM : class, IBasicModel
+        {
+            return await _context.Set<T>().ProjectTo<TVM>(_mapper.ConfigurationProvider).FirstOrDefaultAsync(c=>c.Id==id);
         }
         public async Task<T> Add(T model)
         {
@@ -46,11 +55,11 @@ namespace UserUsingFrameWork.Services
             return model;
 
         }
-        public async Task<T> Delete(int id)
+        public async Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel
         {
-            var _temp = await  GetId(id);
+            var _temp = await  GetId<TVM>(id);
              
-            _context.Set<T>().Remove(_temp);
+            _context.Set<T>().Remove(_mapper.Map<T>(_temp));
              await _context.SaveChangesAsync();
             return _temp;
 

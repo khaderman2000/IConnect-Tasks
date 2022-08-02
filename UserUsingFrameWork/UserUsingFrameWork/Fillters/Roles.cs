@@ -2,7 +2,7 @@
 
 namespace UserUsingFrameWork.Fillters
 {
-    public class Roles : IActionFilter
+    public class Roles :Attribute, IActionFilter
     {
 
         public void OnActionExecuting(ActionExecutingContext context)

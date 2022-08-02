@@ -1,4 +1,5 @@
-﻿using UserUsingFrameWork.Models;
+﻿using AutoMapper;
+using UserUsingFrameWork.Models;
 
 namespace UserUsingFrameWork.Services
 {
@@ -8,8 +9,9 @@ namespace UserUsingFrameWork.Services
     }
     public class NewUserService : GenRepo<User> , INewUserService
     {
-        public NewUserService(UserContext context) : base(context)
+        public NewUserService(UserContext context,IMapper mapper) : base(context ,mapper)
         {
+
         }
     }
 }

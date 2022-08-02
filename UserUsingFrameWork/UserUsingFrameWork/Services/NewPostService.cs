@@ -1,4 +1,5 @@
-﻿using UserUsingFrameWork.Models;
+﻿using AutoMapper;
+using UserUsingFrameWork.Models;
 
 namespace UserUsingFrameWork.Services
 {
@@ -8,7 +9,7 @@ namespace UserUsingFrameWork.Services
         }
         public class NewPostService : GenRepo<Post>, INewPostService
         {
-            public NewPostService(UserContext context) : base(context)
+            public NewPostService(UserContext context,IMapper mapper) : base(context,mapper)
             {
             }
         }

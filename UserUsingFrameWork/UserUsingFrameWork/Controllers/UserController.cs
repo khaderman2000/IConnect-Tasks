@@ -23,7 +23,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var users =await _userService.Get();
+                var users =await _userService.Get<UserVM>();
                 return Ok(_mapper.Map<List<UserVM>>(users));
             }
             catch (Exception)
@@ -37,7 +37,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var users = await  _userService.GetId(id);
+                var users = await  _userService.GetId<UserVM>(id);
                 
                 return Ok(_mapper.Map<UserVM>(users));
             }
@@ -81,7 +81,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                await  _userService.Delete(id);
+                await  _userService.Delete<UserVM>(id);
                 return Ok();
             }
             catch (Exception)

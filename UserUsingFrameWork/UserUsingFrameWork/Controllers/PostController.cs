@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
+using UserUsingFrameWork.Fillters;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UserUsingFrameWork.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [Roles]
     public class PostController : ControllerBase
     {
         INewPostService _postService;
@@ -18,12 +21,12 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        //[ServiceFilter(typeof(Roles))]
+       // [Roles]
         public  async Task<IActionResult> GetAllPosts()
         { 
             try
             { 
-               var posts = await _postService.Get();
+               var posts = await _postService.Get<PostVM>();
                if (posts == null) return NotFound();
                return Ok(_mapper.Map<List<PostVM>>(posts));
             }
@@ -38,11 +41,11 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var posts =await _postService.GetId(id);
-                if (posts == null) return NotFound();
+                var posts =await _postService.GetId<PostVM>(id);
+                 if (posts == null) return NotFound();
                 return Ok(_mapper.Map<PostVM>(posts));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Error: unvaild Id ");
             }
@@ -89,7 +92,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-              await _postService.Delete(id);
+              await _postService.Delete<PostVM>(id);
                 return Ok();
             }
             catch (Exception)

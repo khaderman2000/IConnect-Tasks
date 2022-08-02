@@ -14,7 +14,7 @@ namespace UserUsingFrameWork.Extensions
             services.AddScoped<INewUserService, NewUserService>();
             services.AddScoped<INewPostService, NewPostService>();
             services.AddScoped<Roles>();
-            services.AddAutoMapper(typeof(Program));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }               
 }
