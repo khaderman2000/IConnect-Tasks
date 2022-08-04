@@ -21,7 +21,7 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-       // [Roles]
+        //[Roles]
         public  async Task<IActionResult> GetAllPosts()
         { 
             try
@@ -45,7 +45,7 @@ namespace UserUsingFrameWork.Controllers
                  if (posts == null) return NotFound();
                 return Ok(_mapper.Map<PostVM>(posts));
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 throw new Exception("Error: unvaild Id ");
             }

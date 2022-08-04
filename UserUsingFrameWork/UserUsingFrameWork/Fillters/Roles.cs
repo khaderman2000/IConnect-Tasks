@@ -7,10 +7,10 @@ namespace UserUsingFrameWork.Fillters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            if (context.HttpContext.Request.Headers.FirstOrDefault(c => c.Key == "Role").Value != "Admin")
+            if (context.HttpContext.Request.Headers.FirstOrDefault(c => c.Key == "Role").Value != "khader")
             {
-                throw new Exception("you can't access to data");
-                return;
+                throw new Exception("can't access");
+                return ;
             }
         }
 

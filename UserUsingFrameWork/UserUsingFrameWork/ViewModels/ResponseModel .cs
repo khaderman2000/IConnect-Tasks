@@ -2,15 +2,7 @@
 {
     public class ResponseModel
     {
-        public bool IsSuccess
-        {
-            get;
-            set;
-        }
-        public string Messsage
-        {
-            get;
-            set;
-        }
+        public string? Status { get; set; }
+        public string? Message { get; set; }
     }
 }

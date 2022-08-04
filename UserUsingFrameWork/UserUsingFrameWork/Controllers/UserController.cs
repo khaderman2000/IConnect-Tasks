@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UserUsingFrameWork.Models;
@@ -19,11 +20,12 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]")]
+        [Authorize]
         public async Task<IActionResult> GetAllUsers()
         {
             try
             {
-                var users =await _userService.Get<UserVM>();
+                var users = await _userService.Get<UserVM>();
                 return Ok(_mapper.Map<List<UserVM>>(users));
             }
             catch (Exception)
@@ -37,11 +39,11 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                var users = await  _userService.GetId<UserVM>(id);
-                
+                var users = await _userService.GetId<UserVM>(id);
+
                 return Ok(_mapper.Map<UserVM>(users));
             }
-            catch (Exception)
+                   catch (Exception)
             {
                 return BadRequest();
             }
@@ -81,7 +83,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                await  _userService.Delete<UserVM>(id);
+                await _userService.Delete<UserVM>(id);
                 return Ok();
             }
             catch (Exception)
