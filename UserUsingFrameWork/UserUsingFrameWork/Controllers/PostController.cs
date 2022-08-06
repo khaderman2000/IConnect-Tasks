@@ -4,6 +4,7 @@ using UserUsingFrameWork.Services;
 using UserUsingFrameWork.Fillters;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace UserUsingFrameWork.Controllers
 {
@@ -40,7 +41,7 @@ namespace UserUsingFrameWork.Controllers
         public async Task<IActionResult> GetPostById(int id)
         {
             try
-            {
+            { 
                 var posts =await _postService.GetId<PostVM>(id);
                  if (posts == null) return NotFound();
                 return Ok(_mapper.Map<PostVM>(posts));
@@ -53,18 +54,21 @@ namespace UserUsingFrameWork.Controllers
         
         [HttpPost]
         [Route("[action]")]
+        [Authorize]
         public async Task<IActionResult> AddPosts([FromBody]PostVM postModel)
         {
 
             try
             {
+                var id = User.FindFirst(ClaimTypes.Sid)?.Value;
+                postModel.UserId = int.Parse(id); 
                 var model =await   _postService.Add(_mapper.Map<Post>(postModel));
-                return Ok(model);
+                return Ok(postModel);
             }
             catch (Exception)
             {
 
-                throw new Exception("Error:there is no User with Id: "+postModel.UserId+" , or check database ");
+                throw new Exception(" or check database ");
             } 
                 
             
