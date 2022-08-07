@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using UserUsingFrameWork.Models;
 using UserUsingFrameWork.Services;
 
@@ -50,11 +51,14 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPost]
         [Route("[action]")]
+        [Authorize]
         public async Task<IActionResult> AddUser(UserVM userModel)
         {
             try
             {
-                var model = await _userService.Add(_mapper.Map<User>(userModel));
+                  var id = User.FindFirst(ClaimTypes.Sid)?.Value;
+
+                var model = await _userService.Add(_mapper.Map<User>(userModel),int.Parse(id));
                 return Ok(model);
             }
             catch (Exception)
@@ -64,11 +68,13 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPut]
         [Route("[action]")]
+        [Authorize]
         public IActionResult UpdatUser(UserVM userModel)
         {
             try
             {
-                var model = _userService.Update(_mapper.Map<User>(userModel));
+                var id = User.FindFirst(ClaimTypes.Sid)?.Value;
+                var model = _userService.Update(_mapper.Map<User>(userModel),int.Parse(id));
                 return Ok(model);
             }
             catch (Exception)

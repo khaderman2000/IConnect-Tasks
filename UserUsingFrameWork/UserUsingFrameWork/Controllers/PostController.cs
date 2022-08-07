@@ -45,6 +45,7 @@ namespace UserUsingFrameWork.Controllers
                 var posts = await _postService.GetPage( page,  size,  search);
                 if (posts == null) return NotFound();
                 return Ok(_mapper.Map<List<PostVM>>(posts));
+
             }
             catch (Exception)
             {
@@ -76,8 +77,8 @@ namespace UserUsingFrameWork.Controllers
             try
             {
                 var id = User.FindFirst(ClaimTypes.Sid)?.Value;
-                postModel.UserId = int.Parse(id); 
-                var model =await   _postService.Add(_mapper.Map<Post>(postModel));
+               postModel.UserId = int.Parse(id); 
+                var model =await   _postService.Add(_mapper.Map<Post>(postModel), int.Parse(id));
                 return Ok(postModel);
             }
             catch (Exception)
@@ -92,11 +93,14 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPut]
         [Route("[action]")]
+        [Authorize]
         public IActionResult UpdatePost(PostVM postModel)
         {
             try 
-            { 
-                var model = _postService.Update(_mapper.Map<Post>(postModel));
+            {
+                var id = User.FindFirst(ClaimTypes.Sid)?.Value;
+                postModel.UserId = int.Parse(id);
+                var model = _postService.Update(_mapper.Map<Post>(postModel),int.Parse(id));
                 return Ok(model);
             }
             catch (Exception)
