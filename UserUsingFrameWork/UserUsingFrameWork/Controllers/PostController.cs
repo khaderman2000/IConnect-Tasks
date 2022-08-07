@@ -37,6 +37,21 @@ namespace UserUsingFrameWork.Controllers
             }
         }
         [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> GetPostPages(int page, int size, string search)
+        {
+            try
+            {
+                var posts = await _postService.GetPage( page,  size,  search);
+                if (posts == null) return NotFound();
+                return Ok(_mapper.Map<List<PostVM>>(posts));
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error: cant get all user");
+            }
+        }
+        [HttpGet]
         [Route("[action]/id")]
         public async Task<IActionResult> GetPostById(int id)
         {
