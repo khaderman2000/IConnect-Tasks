@@ -11,7 +11,7 @@ namespace UserUsingFrameWork.Services
         public Task<List<TVM>?> Get<TVM>() where TVM :class, IBasicModel;
         public ValueTask<TVM?> GetId<TVM>(int id) where TVM : class, IBasicModel;
         public Task<T> Add(T model,int id);
-        public T Update(T model,int id);
+        public  T Update(T model,int id);
         public Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel;
 
     }
@@ -66,18 +66,46 @@ namespace UserUsingFrameWork.Services
             }
             return model ;
         }
-        public T Update(T model,int id)
+        public  T Update(T model,int id)
         {
+            var old = _context.Set<Post>().AsNoTracking().FirstOrDefault(c => c.Id == model.Id)
             Type mytype = model.GetType();
+
             var updateDate = mytype.GetProperties().FirstOrDefault(x => x.Name == "updateDate");
             var updateBy = mytype.GetProperties().FirstOrDefault(x => x.Name == "updateBy");
+                       
             if (updateDate != null)
             {
+                var createBy = mytype.GetProperties().FirstOrDefault(x => x.Name == "createBy");
+                var createDate = mytype.GetProperties().FirstOrDefault(x => x.Name == "createDate");
+               
                 updateDate.SetValue(model, DateTime.Now);
                 updateBy.SetValue(model, id);
+
+                var row = _context.Set<Post>().Select(
+                   x => new
+                   {
+                       id = x.Id,
+                       XcreatedDate = x.createDate,
+                       XcreatedBy = x.createBy
+                   }
+
+                   ).FirstOrDefault(c => c.id == model.Id);
+
+                createDate.SetValue(model, row.XcreatedDate);
+                createBy.SetValue(model, row.XcreatedBy);
             }
-            _context.Update<T>(model);
-            _context.SaveChanges();
+            try
+            {
+                _context.Update<T>(model);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
             return model;
 
         }
