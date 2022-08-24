@@ -21,7 +21,7 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpGet]
         [Route("[action]")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> GetAllUsers()
         {
             try
@@ -51,15 +51,16 @@ namespace UserUsingFrameWork.Controllers
         }
         [HttpPost]
         [Route("[action]")]
-        [Authorize]
+       // [Authorize]
         public async Task<IActionResult> AddUser(UserVM userModel)
         {
             try
             {
-                  var id = User.FindFirst(ClaimTypes.Sid)?.Value;
+                var id ="1";// User.FindFirst(ClaimTypes.Sid)?.Value;
 
                 var model = await _userService.Add(_mapper.Map<User>(userModel),int.Parse(id));
                 return Ok(model);
+
             }
             catch (Exception)
             {
@@ -89,7 +90,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-                await _userService.Delete<UserVM>(id);
+                await _userService.Delete(id);
                 return Ok();
             }
             catch (Exception)

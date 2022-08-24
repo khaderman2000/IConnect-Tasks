@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xTE3A10PLJqFQgwemh9fDn2O3UblDG2lUjivW7aPtVHdA9s19ZBjdTEeSoJnjuXt6t1M+WMy2DSTqRJgmJFG3Q==",
+  "dgSpecHash": "CU5RpjpVT1w6pU1GiXuBtqzf0Kg6c8w5FqA6ALJqy+ug4t4S0sciGbfMO4Q+hcu88Hzg/Ac0nMQ9euxVjx5T9A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khade\\IConnect tasks\\IConnect-Tasks\\UserUsingFrameWork\\UserUsingFrameWork\\UserUsingFrameWork.csproj",
+  "projectFilePath": "C:\\Users\\khade\\Documents\\GitHub\\IConnect-Tasks\\UserUsingFrameWork\\UserUsingFrameWork\\UserUsingFrameWork.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khade\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\khade\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

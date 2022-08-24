@@ -70,13 +70,13 @@ namespace UserUsingFrameWork.Controllers
         
         [HttpPost]
         [Route("[action]")]
-        [Authorize]
+       // [Authorize]
         public async Task<IActionResult> AddPosts([FromBody]PostVM postModel)
         {
 
             try
             {
-                var id = User.FindFirst(ClaimTypes.Sid)?.Value;
+                var id = "1"; /*= User.FindFirst(ClaimTypes.Sid)?.Value*/;
                postModel.UserId = int.Parse(id); 
                 var model =await   _postService.Add(_mapper.Map<Post>(postModel), int.Parse(id));
                 return Ok(postModel);
@@ -115,7 +115,7 @@ namespace UserUsingFrameWork.Controllers
         {
             try
             {
-              await _postService.Delete<PostVM>(id);
+              await _postService.Delete(id);
                 return Ok();
             }
             catch (Exception)

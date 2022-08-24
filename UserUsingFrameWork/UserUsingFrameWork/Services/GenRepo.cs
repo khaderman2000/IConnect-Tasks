@@ -12,8 +12,8 @@ namespace UserUsingFrameWork.Services
         public ValueTask<TVM?> GetId<TVM>(int id) where TVM : class, IBasicModel;
         public Task<T> Add(T model,int id);
         public T Update(T model,int id);
-        public Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel;
-
+        /*public Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel;*/
+        public Task<bool> Delete(int id);
     }
 
         
@@ -81,13 +81,41 @@ namespace UserUsingFrameWork.Services
             return model;
 
         }
-        public async Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel
+        /*public async Task<TVM> Delete<TVM>(int id) where TVM : class, IBasicModel
         {
             var _temp = await  GetId<TVM>(id);
-             
-            _context.Set<T>().Remove(_mapper.Map<T>(_temp));
-             await _context.SaveChangesAsync();
+            var user = _mapper.Map<T>(_temp);
+
+
+            _context.Set<T>().Remove(user);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception e) { 
+            }
             return _temp;
+
+        }*/
+        public async Task<bool> Delete(int id)
+        {
+            try
+            {
+
+
+                var _temp = await _context.Set<T>().FindAsync(id);
+                var g = _context.Set<T>().Remove(_temp);
+                // _context.Entry(_temp).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                // var variable= _context.Users.ToList();
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
 
         }
 

@@ -44,6 +44,7 @@ namespace UserUsingFrameWork.Extensions
             services.AddScoped<INewPostService, NewPostService>();
             services.AddScoped<Roles>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddCors();
 
         }
     }
