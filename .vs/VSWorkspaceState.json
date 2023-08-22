@@ -1,15 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\UserUsingFrameWork",
-    "\\UserUsingFrameWork\\UserUsingFrameWork",
-    "\\UserUsingFrameWork\\UserUsingFrameWork\\Controllers",
-    "\\UserUsingFrameWork\\UserUsingFrameWork\\Services",
-    "\\UserUsingFrameWork\\UserUsingFrameWork\\ViewModels",
+    "\\WebApplication2",
     "\\WebApplication2\\WebApplication2",
     "\\WebApplication2\\WebApplication2\\Controllers",
     "\\WebApplication2\\WebApplication2\\Repo"
   ],
-  "SelectedNode": "\\UserUsingFrameWork\\UserUsingFrameWork\\Program.cs",
+  "SelectedNode": "\\WebApplication2\\WebApplication2\\Controllers\\ValuesController.cs",
   "PreviewInSolutionExplorer": false
 }
