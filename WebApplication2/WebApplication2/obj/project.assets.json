@@ -2297,11 +2297,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\khade\\Downloads\\IConnect-Tasks-b4\\IConnect-Tasks-b4dcde73236b532c3df14d4f8bee43847a6a4d21\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
+      "projectUniqueName": "C:\\Users\\khade\\Desktop\\my-github\\IConnect-Tasks2\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
       "projectName": "WebApplication2",
-      "projectPath": "C:\\Users\\khade\\Downloads\\IConnect-Tasks-b4\\IConnect-Tasks-b4dcde73236b532c3df14d4f8bee43847a6a4d21\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
+      "projectPath": "C:\\Users\\khade\\Desktop\\my-github\\IConnect-Tasks2\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
       "packagesPath": "C:\\Users\\khade\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\khade\\Downloads\\IConnect-Tasks-b4\\IConnect-Tasks-b4dcde73236b532c3df14d4f8bee43847a6a4d21\\WebApplication2\\WebApplication2\\obj\\",
+      "outputPath": "C:\\Users\\khade\\Desktop\\my-github\\IConnect-Tasks2\\WebApplication2\\WebApplication2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\khade\\AppData\\Roaming\\NuGet\\NuGet.Config",

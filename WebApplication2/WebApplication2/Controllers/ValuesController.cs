@@ -8,6 +8,12 @@ namespace WebApplication2.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly UserRepo _userRepo; // Declare an instance variable
+
+        public ValuesController(UserRepo userRepo) // Inject UserRepo through constructor
+        {
+            _userRepo = userRepo;
+        }
         [HttpGet ]
         public ActionResult<List<User>> GetAll()
         {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QyzMCh8BH+sP3dYvOh9wVVOofJOw9HeIHH+3IfKpHePEq7me9lNaOut3KADgqed0sxBsSqOqcaFMgI5DOjzUqw==",
+  "dgSpecHash": "26VI61n9UKfBlE8QD2AsIE8r3E6A35LG6wK2cAG4P6RF8uKHSm5QsTsZw9S4740wOob1d7LijUmtuNqBMFMAVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khade\\Downloads\\IConnect-Tasks-b4\\IConnect-Tasks-b4dcde73236b532c3df14d4f8bee43847a6a4d21\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
+  "projectFilePath": "C:\\Users\\khade\\Desktop\\my-github\\IConnect-Tasks2\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khade\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\khade\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
